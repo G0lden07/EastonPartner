@@ -11,9 +11,4 @@ public class HomeController : BaseController<HomeController>
     {
         return View();
     }
-
-    // Template actions
-    public IActionResult About() => View();
-    public IActionResult TOS() => View();
-    public IActionResult Privacy() => View();
 }
