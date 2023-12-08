@@ -1,22 +1,50 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using EastonPartners.Domain.Entities.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/Layouts/Front/_Layout.cshtml";
 }
 
     <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-5">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-6">
-                        <div class="text-center my-5">
-                            <h1 class="display-5 fw-bolder text-white mb-2">Welcome to Easton Databases!</h1>
-                            <p class="lead text-white-50 mb-4">Log in to view or edit Easton Area School District's databases</p>
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                                <a class="btn btn-outline-light btn-lg px-4" asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a>
-                            </div>
+@if (SignInManager.IsSignedIn(User))
+{
+    <header class="bg-dark py-5">
+        <div class="container px-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center my-5">
+                        <h1 class="display-5 fw-bolder text-white mb-2">Welcome to Easton Databases!</h1>
+                        <p class="lead text-white-50 mb-4">Go to the dashboard to view or edit Easton Area School District's databases</p>
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                            <a class="btn btn-outline-light btn-lg px-4" asp-area="Dashboard" asp-controller="Home" asp-action="Index">Dashboard</a>
                         </div>
                     </div>
-                    <div class="col-lg-3 d-none d-lg-block"><img class="mt-4" src="/theme/front/img/logo.png"></div>
                 </div>
+                <div class="col-lg-3 d-none d-lg-block"><img class="mt-4" src="/theme/front/img/logo.png"></div>
             </div>
-        </header>
+        </div>
+    </header>
+}
+else
+{
+    <header class="bg-dark py-5">
+        <div class="container px-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center my-5">
+                        <h1 class="display-5 fw-bolder text-white mb-2">Welcome to Easton Databases!</h1>
+                        <p class="lead text-white-50 mb-4">Log in to view or edit Easton Area School District's databases</p>
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                            <a class="btn btn-outline-light btn-lg px-4" asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 d-none d-lg-block"><img class="mt-4" src="/theme/front/img/logo.png"></div>
+            </div>
+        </div>
+    </header>
+}

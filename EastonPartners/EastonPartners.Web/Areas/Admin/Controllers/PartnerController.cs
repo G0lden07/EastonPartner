@@ -29,12 +29,12 @@ public class PartnerController : BaseController<PartnerController>
 	    public string Name { get; set; }
 	    public string Description { get; set; }
 	    public string PhoneNumber { get; set; }
-	    public string Email { get; set; }
+	    public string Website { get; set; }
 	    public int PartnerTypeId { get; set; }
 	}
 
-	private const string createBindingFields = "PartnerId,Name,Description,PhoneNumber,Email,PartnerTypeId";
-    private const string editBindingFields = "PartnerId,Name,Description,PhoneNumber,Email,PartnerTypeId";
+	private const string createBindingFields = "PartnerId,Name,Description,PhoneNumber,Website,PartnerTypeId";
+    private const string editBindingFields = "PartnerId,Name,Description,PhoneNumber,Website,PartnerTypeId";
     private const string areaTitle = "Admin";
 
     private readonly ApplicationDbContext _context;
@@ -168,7 +168,7 @@ public class PartnerController : BaseController<PartnerController>
         model.Name = partner.Name;
         model.Description = partner.Description;
         model.PhoneNumber = partner.PhoneNumber;
-        model.Email = partner.Email;
+        model.Website = partner.Website;
         model.PartnerTypeId = partner.PartnerTypeId;
         // Remove validation errors from fields that aren't in the binding field list
         ModelState.Scrub(editBindingFields);           
