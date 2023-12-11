@@ -1,0 +1,51 @@
+@inject EastonPartners.Domain.Entities.Settings.ApplicationSettings Settings
+
+@{
+    Layout = "Layouts/Empty/_Layout";
+}
+
+<div class="container-narrow py-4">
+    <div class="text-center mb-2">
+        <div class="navbar-brand navbar-brand-autodark">
+            <div class="d-flex flex-row">
+                <div class="p-3">
+                    <img src="@Settings.LogoImageUrlSmall" style="height:3rem">
+                </div>
+                <div class="align-self-center">
+                    <div class="fs-1 fw-bolder">
+                        <a style="color:white" asp-area="" asp-controller="Home" asp-action="Index">@Settings.SiteName</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card card-md">
+        <div class="card-body">
+            <h2 class="fw-bold">Help Menu</h2>
+            <br/>
+            <div class="markdown">
+                <p>Easton Databases is a web app used by Easton Area School District to store and view information about its partners, expenses, and other sorts of information in databases. Only Admins are allowed to edit the information in the databases, while users are allowed to view them.</p>
+                <hr>
+                <div>
+                    <h3>How do I make an account?</h3>
+                    <p>You don't. This app is fully administered by Easton Area School District, and only the school district is authorized to create accounts and give them to school staff. If you're a manager at the school district you will be given a username and password to access the app.</p>
+                </div>
+                <div>
+                    <h3>How do I view databases?</h3>
+                    <p>If you log in, you should be redirected to your home page (Dashboard) where you can click on a database to view its contents.</p>
+                    <p>If you're an Admin you can also edit the data inside each database, but only if management tells you that something needs to be changed.</p>
+                    </div>
+                <div>
+                    <h3>If I'm an Admin, how do I edit a database</h3>
+                    <p>To add a new row to a database, click on the blue button on the topright side of the table showing the contents of the database. You should be able to add new information to the table. </p>
+                    <p>NOTE: You should NEVER change anything in a database unless you're told to. </p>
+                    <hr>
+                </div>
+                <div>
+                    <p>If you face any technical problems using this app, email the tech department and notify them of the issue.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

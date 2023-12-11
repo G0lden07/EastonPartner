@@ -11,4 +11,8 @@ public class HomeController : BaseController<HomeController>
     {
         return View();
     }
+    public IActionResult Help()
+    {
+        return View();
+    }
 }
