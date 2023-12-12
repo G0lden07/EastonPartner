@@ -92,7 +92,8 @@ public class PartnerController : BaseController<PartnerController>
             .ThenAction("Manage Partner", "Index", "Partner", new { Area = "Admin" })
             .Then("Create Partner");     
 
-        ViewData["PartnerTypeId"] = new SelectList(_context.PartnerType, "Id", "Id");
+        ViewData["PartnerTypeId"] = new SelectList(_context.PartnerType, "Id", "Name");
+
        return View();
 	}
 
@@ -121,7 +122,7 @@ public class PartnerController : BaseController<PartnerController>
             
                 return RedirectToAction(nameof(Index));
             }
-        ViewData["PartnerTypeId"] = new SelectList(_context.PartnerType, "Id", "Id", partner.PartnerTypeId);
+        ViewData["PartnerTypeId"] = new SelectList(_context.PartnerType, "Id", "Name", partner.PartnerTypeId);
         return View(partner);
     }
 
@@ -145,7 +146,7 @@ public class PartnerController : BaseController<PartnerController>
             return NotFound();
         }
         
-        ViewData["PartnerTypeId"] = new SelectList(_context.PartnerType, "Id", "Id", partner.PartnerTypeId);
+        ViewData["PartnerTypeId"] = new SelectList(_context.PartnerType, "Id", "Name", partner.PartnerTypeId);
 
         return View(partner);
     }
@@ -203,7 +204,7 @@ public class PartnerController : BaseController<PartnerController>
             }
             return RedirectToAction(nameof(Index));
         }
-        ViewData["PartnerTypeId"] = new SelectList(_context.PartnerType, "Id", "Id", partner.PartnerTypeId);
+        ViewData["PartnerTypeId"] = new SelectList(_context.PartnerType.OrderBy(x => x.Name), "Id", "Name", partner.PartnerTypeId);
         return View(partner);
     }
 

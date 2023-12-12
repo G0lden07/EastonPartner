@@ -1,3 +1,9 @@
+@using Microsoft.AspNetCore.Identity
+@using EastonPartners.Domain.Entities.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @using EastonPartners.Domain.Entities.Settings
 @inject ApplicationSettings Settings
 
@@ -14,7 +20,14 @@
                 <h5 class="text-white mb-3">Quick links</h5>
                 <ul class="list-unstyled text-muted">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a></li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li><a asp-area="Dashboard" asp-controller="Home" asp-action="Index">Dashboard</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a></li>
+                    }
                     <li><a asp-area="" asp-controller="Home" asp-action="Help">Help</a></li>
                 </ul>
             </div>
