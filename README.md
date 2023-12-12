@@ -1,7 +1,7 @@
 # RoverPartners
 RoverPartners is a data management app. It allows the school district to store, view, and edit information about business and community partners. Administrators have the ability to add new data, view the data, edit the data, and delete the data. 
 
-**App features: 
+**App features**: 
 -Admin Navigation Bar
 -CRUD Users
 -CRUD Roles
