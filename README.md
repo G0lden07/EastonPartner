@@ -34,8 +34,9 @@ The project should open in Visual Studio.
 - Initialize the SQL Server Express LocalDB
   - In Visual Studio, go to `View > Other Windows > Package Manager Console`
   - In the console that appears at the bottom, type the command `Update-Database` and wait for the migration to finish.
-- Run the project by clicking on the Debug drop down at the top of Visual Studio and select either "Start Debugging" or "Start Without Debugging"
-  - "Start Without Debugging" is the faster option
+- Run the project
+  - In Visual Studio, go to `Debug > Start Debugging` or `Debug > Start Without Debugging`
+  - `Start Without Debugging` is the faster option
 - Seed Data
   - When running the project for the first time, the database will be seeded with an admin user.
   - You can log in to this account with the username `admin` and the password `Password123!`. It is _highly_ recommended that you change this password after logging in for the first time.
