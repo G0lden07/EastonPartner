@@ -40,6 +40,3 @@ The project should open in Visual Studio.
 - Seed Data
   - When running the project for the first time, the database will be seeded with an admin user.
   - You can log in to this account with the username `admin` and the password `Password123!`. It is _highly_ recommended that you change this password after logging in for the first time.
-
-## Closing
-Built for 2024 FBLA Coding & Programming competition -Built by Easton Area High School student Samir Issa, class of 2026
