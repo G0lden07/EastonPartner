@@ -71,16 +71,17 @@
 {
 	@Html.AntiForgeryToken();
 }
-@section Styles {	
-    <link rel="stylesheet" type="text/css" href="~/vendor/datatables.net-bs5/dataTables.bootstrap5.min.css" />
-}	
+@section Styles {
 
-@section Scripts {	
-	
-	<script type="text/javascript" src="~/vendor/pdfmake/pdfmake.min.js"></script>
-    <script type="text/javascript" src="~/vendor/pdfmake/vfs_fonts.min.js"></script>
-    <script type="text/javascript" src="~/vendor/datatables.net/jquery.dataTables.min.js"></script>
-	<script src="~/vendor/datatables.net-bs5/dataTables.bootstrap5.min.js"></script>
+	<link href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.8/b-2.4.2/b-html5-2.4.2/b-print-2.4.2/date-1.5.1/r-2.5.0/datatables.min.css" rel="stylesheet">
+}
+
+@section Scripts {
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+	<script src="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.8/b-2.4.2/b-html5-2.4.2/b-print-2.4.2/date-1.5.1/r-2.5.0/datatables.min.js"></script>
+
     <script type="text/javascript">	
 	
 	$(document).ready(function () {	
@@ -128,6 +129,16 @@
                         },
 						@Html.Raw(Model.DatatableColumns)
 					],
+					dom: 'BlTfgitp',
+					buttons: ['csv', 'excel', {
+						'extend': 'pdf',
+						'orientation': 'landscape',
+						'pageSize': 'A4'
+					}, 'print'],
+					scrollX: true,
+					initComplete: function () {
+						table.buttons().container().appendTo("#Index .col-md-6:eq(0)");
+					},
 					pageLength: 10,
 					responsive: true,
 					order: [[2, "asc"]],

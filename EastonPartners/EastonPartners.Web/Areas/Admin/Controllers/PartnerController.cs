@@ -22,6 +22,7 @@ namespace EastonPartners.Web.Areas.Admin.Controllers;
 [Authorize(Roles = "Admin")]
 public class PartnerController : BaseController<PartnerController>
 {
+	// ViewModel for the Partner Index page
 	public class PartnerIndexViewModel 
 	{
 		[Key]            
@@ -38,6 +39,7 @@ public class PartnerController : BaseController<PartnerController>
 	    public int PartnerTypeId { get; set; }
 	}
 
+	// Define binding fields for creating and editing a Partner
 	private const string createBindingFields = "PartnerId,Name,Description,PhoneNumber,Email,Address,City,State,PostalCode,Website,PartnerTypeId";
     private const string editBindingFields = "PartnerId,Name,Description,PhoneNumber,Email,Address,City,State,PostalCode,Website,PartnerTypeId";
     private const string areaTitle = "Admin";
@@ -52,7 +54,8 @@ public class PartnerController : BaseController<PartnerController>
     // GET: Admin/Partner
     public IActionResult Index()
     {
-        _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
+		// Define breadcrumbs for navigation
+		_breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
 			.Then("Manage Partner");       
 		
 		// Fetch descriptive data from the index dto to build the datatables index
@@ -74,7 +77,8 @@ public class PartnerController : BaseController<PartnerController>
             return NotFound();
         }
 
-        var partner = await _context.Partner
+		// Fetch the Partner details including the associated PartnerType
+		var partner = await _context.Partner
                 .Include(p => p.PartnerType)
             .FirstOrDefaultAsync(m => m.PartnerId == id);
         if (partner == null)
@@ -90,9 +94,10 @@ public class PartnerController : BaseController<PartnerController>
     {
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
             .ThenAction("Manage Partner", "Index", "Partner", new { Area = "Admin" })
-            .Then("Create Partner");     
+            .Then("Create Partner");
 
-        ViewData["PartnerTypeId"] = new SelectList(_context.PartnerType, "Id", "Name");
+		// Provide a SelectList for the PartnerTypeId field
+		ViewData["PartnerTypeId"] = new SelectList(_context.PartnerType, "Id", "Name");
 
        return View();
 	}
@@ -115,14 +120,17 @@ public class PartnerController : BaseController<PartnerController>
 
         if (ModelState.IsValid)
         {
-            _context.Add(partner);
+			// Add the new Partner to the context and save changes
+			_context.Add(partner);
             await _context.SaveChangesAsync();
             
             _toast.Success("Created successfully.");
             
                 return RedirectToAction(nameof(Index));
             }
-        ViewData["PartnerTypeId"] = new SelectList(_context.PartnerType, "Id", "Name", partner.PartnerTypeId);
+
+		// Provide SelectList for the PartnerTypeId field in case of validation errors
+		ViewData["PartnerTypeId"] = new SelectList(_context.PartnerType, "Id", "Name", partner.PartnerTypeId);
         return View(partner);
     }
 
@@ -140,7 +148,8 @@ public class PartnerController : BaseController<PartnerController>
             return NotFound();
         }
 
-        var partner = await _context.Partner.FindAsync(id);
+		// Fetch the Partner details for editing
+		var partner = await _context.Partner.FindAsync(id);
         if (partner == null)
         {
             return NotFound();
@@ -162,16 +171,19 @@ public class PartnerController : BaseController<PartnerController>
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
         .ThenAction("Manage Partner", "Index", "Partner", new { Area = "Admin" })
-        .Then("Edit Partner");  
-    
-        if (id != partner.PartnerId)
+        .Then("Edit Partner");
+
+		// Check if the provided ID matches the Partner's ID
+		if (id != partner.PartnerId)
         {
             return NotFound();
         }
-        
-        Partner model = await _context.Partner.FindAsync(id);
 
-        model.Name = partner.Name;
+		// Fetch the existing Partner from the context
+		Partner model = await _context.Partner.FindAsync(id);
+
+		// Update the model properties with values from the bound partner
+		model.Name = partner.Name;
         model.Description = partner.Description;
         model.PhoneNumber = partner.PhoneNumber;
         model.Email = partner.Email;
@@ -188,7 +200,8 @@ public class PartnerController : BaseController<PartnerController>
         {
             try
             {
-                await _context.SaveChangesAsync();
+				// Save changes to the context
+				await _context.SaveChangesAsync();
                 _toast.Success("Updated successfully.");
             }
             catch (DbUpdateConcurrencyException)
@@ -222,7 +235,8 @@ public class PartnerController : BaseController<PartnerController>
             return NotFound();
         }
 
-        var partner = await _context.Partner
+		// Fetch the Partner details for deletion
+		var partner = await _context.Partner
                 .Include(p => p.PartnerType)
             .FirstOrDefaultAsync(m => m.PartnerId == id);
         if (partner == null)
@@ -238,7 +252,8 @@ public class PartnerController : BaseController<PartnerController>
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var partner = await _context.Partner.FindAsync(id);
+		// Fetch the Partner and remove it from the context, then save changes
+		var partner = await _context.Partner.FindAsync(id);
         _context.Partner.Remove(partner);
         await _context.SaveChangesAsync();
         
@@ -247,23 +262,28 @@ public class PartnerController : BaseController<PartnerController>
         return RedirectToAction(nameof(Index));
     }
 
-    private bool PartnerExists(int id)
+	// Check if a Partner with the given ID exists in the context
+	private bool PartnerExists(int id)
     {
         return _context.Partner.Any(e => e.PartnerId == id);
     }
 
-
+	// Endpoint to get Partner data for Datatables
 	[HttpPost]
 	[ValidateAntiForgeryToken]
     public async Task<IActionResult> GetPartner(DtRequest request)
     {
         try
 		{
+			// Query to fetch Partner data including PartnerType
 			var query = _context.Partner.Include(p => p.PartnerType);
+
+			// Get Datatables response JSON data
 			var jsonData = await query.GetDatatableResponseAsync<Partner, PartnerIndexViewModel>(request);
 
-            return Ok(jsonData);
-        }
+			// Return the JSON data
+			return Ok(jsonData);
+		}
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error generating Partner index json");
