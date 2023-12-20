@@ -11,6 +11,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Remove="Seeder\partners.json" />
+	  <Content Remove="Seeder\partnertypes.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="11.0.1" />
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
 		<PackageReference Include="Hangfire" Version="1.7.28" />
@@ -51,6 +56,13 @@
 
 	<ItemGroup>
 	  <Folder Include="wwwroot\img\email\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Seeder\partners.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Seeder\partnertypes.json" />
 	</ItemGroup>
 
 </Project>
