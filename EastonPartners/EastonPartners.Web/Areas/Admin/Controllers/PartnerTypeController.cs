@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using EastonPartners.Domain.Entities;
 using EastonPartners.Infrastructure.Persistence.DbContexts;
+using EastonPartners.Web.Seeder;
 
 namespace EastonPartners.Web.Areas.Admin.Controllers;
 
@@ -96,6 +97,7 @@ public class PartnerTypeController : BaseController<PartnerTypeController>
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(createBindingFields)] PartnerType partnerType)
     {
+        PartnerTypeToJSON jsonConvertor = new PartnerTypeToJSON(_context);
         ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
@@ -112,6 +114,8 @@ public class PartnerTypeController : BaseController<PartnerTypeController>
             await _context.SaveChangesAsync();
             
             _toast.Success("Created successfully.");
+
+            jsonConvertor.copyToJSON();
             
                 return RedirectToAction(nameof(Index));
             }
@@ -150,6 +154,7 @@ public class PartnerTypeController : BaseController<PartnerTypeController>
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, [Bind(editBindingFields)] PartnerType partnerType)
     {
+        PartnerTypeToJSON jsonConvertor = new PartnerTypeToJSON(_context);
         ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
@@ -177,6 +182,7 @@ public class PartnerTypeController : BaseController<PartnerTypeController>
 				// Save changes to the context
 				await _context.SaveChangesAsync();
                 _toast.Success("Updated successfully.");
+                jsonConvertor.copyToJSON();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -224,12 +230,16 @@ public class PartnerTypeController : BaseController<PartnerTypeController>
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-		// Fetch the Partner type and remove it from the context, then save changes
-		var partnerType = await _context.PartnerType.FindAsync(id);
+        PartnerTypeToJSON jsonConvertor = new PartnerTypeToJSON(_context);
+
+        // Fetch the Partner type and remove it from the context, then save changes
+        var partnerType = await _context.PartnerType.FindAsync(id);
         _context.PartnerType.Remove(partnerType);
         await _context.SaveChangesAsync();
         
         _toast.Success("PartnerType deleted successfully");
+
+        jsonConvertor.copyToJSON();
 
         return RedirectToAction(nameof(Index));
     }

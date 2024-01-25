@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 1,
+    "Name": "Educational"
+  },
+  {
+    "Id": 2,
+    "Name": "Financial"
+  },
+  {
+    "Id": 3,
+    "Name": "Other"
+  },
+  {
+    "Id": 4,
+    "Name": "Utility Provider"
+  }
+]
