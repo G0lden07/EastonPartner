@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using EastonPartners.Domain.Entities;
 using EastonPartners.Infrastructure.Persistence.DbContexts;
+using EastonPartners.Web.Seeder;
 
 namespace EastonPartners.Web.Areas.Admin.Controllers;
 
@@ -109,7 +110,8 @@ public class PartnerController : BaseController<PartnerController>
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(createBindingFields)] Partner partner)
     {
-        ViewData["AreaTitle"] = areaTitle;
+		PartnerToJSON jsonConvertor = new PartnerToJSON(_context);
+		ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
         .ThenAction("Manage Partner", "Index", "PartnerController", new { Area = "Admin" })
@@ -125,6 +127,8 @@ public class PartnerController : BaseController<PartnerController>
             await _context.SaveChangesAsync();
             
             _toast.Success("Created successfully.");
+
+            jsonConvertor.copyToJSON();
             
                 return RedirectToAction(nameof(Index));
             }
@@ -167,7 +171,8 @@ public class PartnerController : BaseController<PartnerController>
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, [Bind(editBindingFields)] Partner partner)
     {
-        ViewData["AreaTitle"] = areaTitle;
+		PartnerToJSON jsonConvertor = new PartnerToJSON(_context);
+		ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
         .ThenAction("Manage Partner", "Index", "Partner", new { Area = "Admin" })
@@ -203,7 +208,8 @@ public class PartnerController : BaseController<PartnerController>
 				// Save changes to the context
 				await _context.SaveChangesAsync();
                 _toast.Success("Updated successfully.");
-            }
+				jsonConvertor.copyToJSON();
+			}
             catch (DbUpdateConcurrencyException)
             {
                 if (!PartnerExists(partner.PartnerId))
@@ -252,6 +258,8 @@ public class PartnerController : BaseController<PartnerController>
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
+		PartnerToJSON jsonConvertor = new PartnerToJSON(_context);
+
 		// Fetch the Partner and remove it from the context, then save changes
 		var partner = await _context.Partner.FindAsync(id);
         _context.Partner.Remove(partner);
@@ -259,7 +267,9 @@ public class PartnerController : BaseController<PartnerController>
         
         _toast.Success("Partner deleted successfully");
 
-        return RedirectToAction(nameof(Index));
+		jsonConvertor.copyToJSON();
+
+		return RedirectToAction(nameof(Index));
     }
 
 	// Check if a Partner with the given ID exists in the context

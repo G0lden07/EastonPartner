@@ -68,17 +68,24 @@ namespace EastonPartners.Web.Seeder
 
                 transaction.Commit();
             }
+            
+			if (!_context.Partner.Any())
+			{
+				await using var transaction = await _context.Database.BeginTransactionAsync();
 
-            /*
-            if (!_context.Partner.Any())
-            {
-                var records = ReadAll<List<Partner>>("partners.json");
+				_context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Partner ON");
 
-                // _context.Partner.AddRange(records);
-                //_context.SaveChanges();
-            }
-            */
-            Console.WriteLine("Seeding partners");
+				var records = ReadAll<Partner>("partners.json");
+
+				_context.Partner.AddRange(records);
+				_context.SaveChanges();
+
+				_context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Partner OFF");
+
+				transaction.Commit();
+			}
+            
+			Console.WriteLine("Seeding partners");
         }
     }
 }
