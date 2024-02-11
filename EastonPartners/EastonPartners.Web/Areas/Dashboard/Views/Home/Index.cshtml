@@ -44,17 +44,20 @@
 </div>
 
 <!-- Manage Users-->
-<div>
-	<h2 style="margin-bottom: 1%;" class="page-title">
-		Manage Users
-	</h2>
-	<span class="d-none d-sm-inline">
-		<a style="margin-right: 1%; margin-bottom: 1%;" class="btn btn-primary" asp-area="Identity" asp-controller="Users" asp-action="Index">
-			Users
-		</a>
-		<a style="margin-right: 1%; margin-bottom: 1%;" class="btn btn-primary" asp-area="Identity" asp-controller="Roles" asp-action="Index">
-			Roles
-		</a>
-	</span>
-</div>
+@if (User.IsInRole("Admin"))
+{
+	<div>
+		<h2 style="margin-bottom: 1%;" class="page-title">
+			Manage Users
+		</h2>
+		<span class="d-none d-sm-inline">
+			<a style="margin-right: 1%; margin-bottom: 1%;" class="btn btn-primary" asp-area="Identity" asp-controller="Users" asp-action="Index">
+				Users
+			</a>
+			<a style="margin-right: 1%; margin-bottom: 1%;" class="btn btn-primary" asp-area="Identity" asp-controller="Roles" asp-action="Index">
+				Roles
+			</a>
+		</span>
+	</div>
+}
 <!-- END SAMPLE TABLER DASHBOARD -->

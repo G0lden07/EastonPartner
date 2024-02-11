@@ -20,7 +20,7 @@ using EastonPartners.Web.Seeder;
 namespace EastonPartners.Web.Areas.Admin.Controllers;
 
 [Area("Admin")]
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin, User")]
 public class PartnerController : BaseController<PartnerController>
 {
 	// ViewModel for the Partner Index page
@@ -90,8 +90,9 @@ public class PartnerController : BaseController<PartnerController>
         return View(partner);
     }
 
-    // GET: Admin/Partner/Create
-    public IActionResult Create()
+	// GET: Admin/Partner/Create
+	[Authorize(Roles = "Admin")]
+	public IActionResult Create()
     {
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
             .ThenAction("Manage Partner", "Index", "Partner", new { Area = "Admin" })
@@ -108,7 +109,8 @@ public class PartnerController : BaseController<PartnerController>
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind(createBindingFields)] Partner partner)
+	[Authorize(Roles = "Admin")]
+	public async Task<IActionResult> Create([Bind(createBindingFields)] Partner partner)
     {
 		PartnerToJSON jsonConvertor = new PartnerToJSON(_context);
 		ViewData["AreaTitle"] = areaTitle;
@@ -138,8 +140,9 @@ public class PartnerController : BaseController<PartnerController>
         return View(partner);
     }
 
-    // GET: Admin/Partner/Edit/5
-    public async Task<IActionResult> Edit(int? id)
+	// GET: Admin/Partner/Edit/5
+	[Authorize(Roles = "Admin")]
+	public async Task<IActionResult> Edit(int? id)
     {
         ViewData["AreaTitle"] = areaTitle;
 
@@ -169,7 +172,8 @@ public class PartnerController : BaseController<PartnerController>
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind(editBindingFields)] Partner partner)
+	[Authorize(Roles = "Admin")]
+	public async Task<IActionResult> Edit(int id, [Bind(editBindingFields)] Partner partner)
     {
 		PartnerToJSON jsonConvertor = new PartnerToJSON(_context);
 		ViewData["AreaTitle"] = areaTitle;
@@ -227,8 +231,9 @@ public class PartnerController : BaseController<PartnerController>
         return View(partner);
     }
 
-    // GET: Admin/Partner/Delete/5
-    public async Task<IActionResult> Delete(int? id)
+	// GET: Admin/Partner/Delete/5
+	[Authorize(Roles = "Admin")]
+	public async Task<IActionResult> Delete(int? id)
     {
         ViewData["AreaTitle"] = areaTitle;
 
@@ -256,7 +261,8 @@ public class PartnerController : BaseController<PartnerController>
     // POST: Admin/Partner/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int id)
+	[Authorize(Roles = "Admin")]
+	public async Task<IActionResult> DeleteConfirmed(int id)
     {
 		PartnerToJSON jsonConvertor = new PartnerToJSON(_context);
 
