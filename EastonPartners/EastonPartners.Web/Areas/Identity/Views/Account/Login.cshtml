@@ -14,14 +14,14 @@
     <div>
       <div class="container-tight py-4">
         <div class="text-center mb-2">
-          <a href="." class="navbar-brand navbar-brand-autodark"><img src="@Settings.LogoImageUrlSmall" style="height: 4rem" alt=""></a>
+          <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand navbar-brand-autodark"><img src="@Settings.LogoImageUrlSmall" style="height: 4rem" alt=""></a>
         </div>
           <form class="card card-md" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" autocomplete="off">
               <div class="card-body">
                   <h2 class="card-title text-center mb-4">Login to your account</h2>
                   <div asp-validation-summary="All" class="text-danger"></div>
                   <div class="mb-3">
-                      <label asp-for="Username" class="form-label"></label>
+                      <label asp-for="Username" class="form-label">Username or Email</label>
                       <input asp-for="Username" class="form-control" />
                       <span asp-validation-for="Username" class="text-danger"></span>
                   </div>
