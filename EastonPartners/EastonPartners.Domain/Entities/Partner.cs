@@ -20,21 +20,26 @@ namespace EastonPartners.Domain.Entities
         [Key]
         public int PartnerId { get; set; }
 
-        [Required]
+		[StringLength(60)]
+		[Required]
         public string Name { get; set; }
 
         [Required]
         public string Description { get; set; }
 
-        public string PhoneNumber { get; set; }
+		[Display(Name = "Phone Number")]
+		public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public string PostalCode { get; set; }
+		[Display(Name = "Postal Code")]
+		public string PostalCode { get; set; }
         public string Website { get; set; }
 
-        public int PartnerTypeId { get; set; }
-        public PartnerType PartnerType { get; set; }
+		[Display(Name = "Partner Type")]
+		public int PartnerTypeId { get; set; }
+		[Display(Name = "Partner Type")]
+		public PartnerType PartnerType { get; set; }
     }
 }
