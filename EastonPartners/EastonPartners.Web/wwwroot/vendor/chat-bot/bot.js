@@ -44,7 +44,7 @@ function go() {
         else assisText.innerText = "Assistant: ";
         assisText.style = "color: red;";
 
-        assisText.innerText += "If you're logged in, go to the homepage and click on the button that says \"Dashboard.\" In your dashboard you should see an option that says \"Partners,\" and if you click on it you should be able to view and manage the information about all the partners. \nNOTE: If you're not an admin you can only view the information but not modify it. ";
+        assisText.innerText += "If you're logged in, go to the homepage and click on the button that says \"Dashboard.\" In your dashboard you should see an option that says \"Partners,\" and if you click on it you should be able to view and manage the information about all the partners. \nNOTE: If you're not an admin you can only view the information but not modify it. \n";
         isFound = true;
         chat.appendChild(assisText);
     }
@@ -56,7 +56,7 @@ function go() {
         else assisText.innerText = "Assistant: ";
         assisText.style = "color: red;";
 
-        assisText.innerText += "If you're an admin, and you'relogged in, go to the homepage and click on the button that says \"Dashboard.\" In your dashboard you should see two options, \"Users,\" and \"Roles.\" Click on one of them and you should be able to view, create, edit, and delete users or roles from the app. \nNOTE: If you're not an admin you don't have access to manage users or roles. ";
+        assisText.innerText += "If you're an admin, and you'relogged in, go to the homepage and click on the button that says \"Dashboard.\" In your dashboard you should see two options, \"Users,\" and \"Roles.\" Click on one of them and you should be able to view, create, edit, and delete users or roles from the app. \nNOTE: If you're not an admin you don't have access to manage users or roles. \n";
         isFound = true;
         chat.appendChild(assisText);
     }
