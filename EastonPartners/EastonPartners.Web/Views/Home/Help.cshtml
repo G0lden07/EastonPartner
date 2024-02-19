@@ -6,7 +6,11 @@
 
 <div class="container-narrow py-4">
     <div class="text-center mb-2">
+        <a style="margin-right: 5%; margin-bottom: 1%;" class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Help">
+            Help Menu
+        </a>
         <div class="navbar-brand navbar-brand-autodark">
+            
             <div class="d-flex flex-row">
                 <div class="p-3">
                     <img src="@Settings.LogoImageUrlSmall" style="height:3rem">
@@ -17,7 +21,11 @@
                     </div>
                 </div>
             </div>
+            
         </div>
+        <a style="margin-left: 5%; margin-bottom: 1%;" class="btn btn-outline-light" asp-area="" asp-controller="Home" asp-action="Assistant">
+            Assistant
+        </a>
     </div>
 
     <div class="card card-md">
@@ -25,21 +33,21 @@
             <h2 class="fw-bold">Help Menu</h2>
             <br/>
             <div class="markdown">
-                <p>Easton Databases is a web app used by Easton Area School District to store and view information about its partners, expenses, and other sorts of information in databases. Only Admins are allowed to edit the information in the databases, while users are allowed to view them.</p>
+                <p>RoverPartners is a web app used by Easton Area School District to store and view information about its business and community partners. Only Admins are allowed to edit the information in the database, while users are allowed to view them.</p>
                 <hr>
                 <div>
                     <h3>How do I make an account?</h3>
                     <p>You don't. This app is fully administered by Easton Area School District, and only the school district is authorized to create accounts and give them to school staff. If you're a manager at the school district you will be given a username and password to access the app.</p>
                 </div>
                 <div>
-                    <h3>How do I view databases?</h3>
-                    <p>If you log in, you should be redirected to your home page (Dashboard) where you can click on a database to view its contents.</p>
-                    <p>If you're an Admin you can also edit the data inside each database, but only if management tells you that something needs to be changed.</p>
+                    <h3>How do I view the information?</h3>
+                    <p>If you log in, you should be redirected to your home page (Dashboard) where you can click on a button from the options that are avilable to you. If you need to see the partners table, click on the button that says "partners."</p>
+                    <p>If you're an Admin you can also edit the information, but only if management tells you that something needs to be changed.</p>
                     </div>
                 <div>
-                    <h3>If I'm an Admin, how do I edit a database</h3>
-                    <p>To add a new row to a database, click on the blue button on the topright side of the table showing the contents of the database. You should be able to add new information to the table. </p>
-                    <p>NOTE: You should NEVER change anything in a database unless you're told to. </p>
+                    <h3>If I'm an Admin, how do I edit the information?</h3>
+                    <p>To add a new row to the datatables, click on the blue button on the topright side of the datatable. You should be able to add new information to the table. </p>
+                    <p>NOTE: You should NEVER change anything in the partners datatable unless you're told to. </p>
                     <hr>
                 </div>
                 <div>

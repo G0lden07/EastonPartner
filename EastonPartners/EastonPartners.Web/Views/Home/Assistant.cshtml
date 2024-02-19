@@ -1,0 +1,46 @@
+@inject EastonPartners.Domain.Entities.Settings.ApplicationSettings Settings
+
+@{
+    Layout = "Layouts/Empty/_Layout";
+}
+
+<head>
+    <script src="~/vendor/chat-bot/bot.js" defer></script>
+</head>
+
+<div class="container-narrow py-4">
+    <div class="text-center mb-2">
+        <a style="margin-right: 5%; margin-bottom: 1%;" class="btn btn-outline-light" asp-area="" asp-controller="Home" asp-action="Help">
+            Help Menu
+        </a>
+        <div class="navbar-brand navbar-brand-autodark">
+            
+            <div class="d-flex flex-row">
+                <div class="p-3">
+                    <img src="@Settings.LogoImageUrlSmall" style="height:3rem">
+                </div>
+                <div class="align-self-center">
+                    <div class="fs-1 fw-bolder">
+                        <a style="color:grey" asp-area="" asp-controller="Home" asp-action="Index">@Settings.SiteName</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <a style="margin-left: 5%; margin-bottom: 1%;" class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Assistant">
+            Assistant
+        </a>
+    </div>
+
+    <div class="card card-md">
+        <div class="card-body">
+            <h2 class="fw-bold">Assistant</h2>
+            <p>Type your question in the box bellow and I'll help you as much as I can.</p>
+            <hr/>
+            <div id="chat">
+
+            </div>
+        </div>
+    </div>
+    <input id="text-box" style="width: 600px;" /> <button onclick="go()" style="width: 68px;" class="btn btn-primary">Go</button>
+</div>

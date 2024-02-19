@@ -15,4 +15,8 @@ public class HomeController : BaseController<HomeController>
     {
         return View();
     }
+    public IActionResult Assistant()
+    {
+        return View();
+    }
 }

@@ -18,14 +18,14 @@
                     <h1 class="display-5 fw-bolder text-white mb-2">Welcome to RoverPartners!</h1>
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <p class="lead text-white-50 mb-4">Go to the dashboard to view or edit Easton Area School District's databases</p>
+                        <p class="lead text-white-50 mb-4">Go to the dashboard to manage Easton Area School District's partner information</p>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                             <a class="btn btn-outline-light btn-lg px-4" asp-area="Dashboard" asp-controller="Home" asp-action="Index">Dashboard</a>
                         </div>
                     }
                     else
                     {
-                        <p class="lead text-white-50 mb-4">Log in to view or edit Easton Area School District's databases</p>
+                        <p class="lead text-white-50 mb-4">Log in to manage Easton Area School District's partner information</p>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                             <a class="btn btn-outline-light btn-lg px-4" asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a>
                         </div>

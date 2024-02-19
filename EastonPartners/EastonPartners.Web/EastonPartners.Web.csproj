@@ -65,4 +65,8 @@
 	  <EmbeddedResource Include="Seeder\partnertypes.json" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Include="wwwroot\vendor\chat-bot\bot.js" />
+	</ItemGroup>
+
 </Project>
