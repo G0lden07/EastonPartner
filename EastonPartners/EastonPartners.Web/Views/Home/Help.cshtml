@@ -3,6 +3,9 @@
 @{
     Layout = "Layouts/Empty/_Layout";
 }
+<head>
+    <script src="~/vendor/theme-adjuster\script.js" defer></script>
+</head>
 
 <div class="container-narrow py-4">
     <div class="text-center mb-2">
@@ -23,7 +26,7 @@
             </div>
             
         </div>
-        <a style="margin-left: 5%; margin-bottom: 1%;" class="btn btn-outline-light" asp-area="" asp-controller="Home" asp-action="Assistant">
+        <a id="unactivated" style="margin-left: 5%; margin-bottom: 1%;" class="btn" asp-area="" asp-controller="Home" asp-action="Assistant">
             Assistant
         </a>
     </div>

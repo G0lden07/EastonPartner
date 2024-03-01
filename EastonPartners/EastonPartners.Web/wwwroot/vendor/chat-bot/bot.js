@@ -51,7 +51,7 @@ function go() {
     }
 
     //Explains what the app is and does
-    if (message.toLowerCase().includes("what") && (message.toLowerCase().includes("roverpartners") || message.toLowerCase().includes("this app") || message.toLowerCase().includes("this website") || message.toLowerCase().includes("this program"))) {
+    if (message.toLowerCase().includes("what") && (message.toLowerCase().includes("roverpartner") || message.toLowerCase().includes("this app") || message.toLowerCase().includes("this website") || message.toLowerCase().includes("this program"))) {
         const assisText = response(isFound);
 
         assisText.innerText += "RoverPartners is a web app used by Easton Area School District to store and view information about its business and community partners. Only Admins are allowed to edit the information in the database, while users are allowed to view them.";
