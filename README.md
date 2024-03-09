@@ -17,8 +17,7 @@ RoverPartners is a data management app. It allows the school district to store, 
     ```.NET Core CLI
     dotnet tool install --global dotnet-ef
     ```
-- [GitHub Desktop](https://desktop.github.com/)
-- [Axosoft's GitKraken](https://www.gitkraken.com/)
+- [GitHub Desktop](https://desktop.github.com/) or [Axosoft's GitKraken](https://www.gitkraken.com/)
 
 ## Setup
 To install the app:
