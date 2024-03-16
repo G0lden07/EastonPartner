@@ -7,8 +7,9 @@ function go() {
 
     //Displays question on the screen
     const myText = document.createElement("p");
+    const background = document.createElement("span");
     myText.innerText = "Me: " + message;
-    myText.style = "color: cyan;";
+    myText.style = "color: white; background-color: dodgerblue; display: table; padding: 10px; border-radius: 10px;";
 
     chat.appendChild(myText);
 
@@ -72,6 +73,7 @@ function response(isFound) {
     const assisText = document.createElement("p");
     if (isFound) assisText.innerText = "";
     else assisText.innerText = "Assistant: ";
-    assisText.style = "color: red;";
+    if (body.classList.contains("theme-light")) assisText.style = "background-color: gainsboro; display: table; padding: 10px; border-radius: 10px;";
+    else if (body.classList.contains("theme-dark")) assisText.style = "background-color: #333333; display: table; padding: 10px; border-radius: 10px;";
     return assisText;
 }
