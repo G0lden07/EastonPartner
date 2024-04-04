@@ -9,7 +9,7 @@
     "City": "New York City",
     "State": "New York",
     "PostalCode": "10036",
-    "Website": "adobe.com",
+    "Website": "https://adobe.com",
     "PartnerTypeId": 4,
     "PartnerType": null
   },
@@ -23,7 +23,7 @@
     "City": "Cupertino",
     "State": "California",
     "PostalCode": "95014",
-    "Website": "apple.com",
+    "Website": "https://apple.com",
     "PartnerTypeId": 4,
     "PartnerType": null
   },
@@ -37,7 +37,7 @@
     "City": "Easton",
     "State": "Pennsylvania",
     "PostalCode": "18040",
-    "Website": "citvt.com",
+    "Website": "https://citvt.com",
     "PartnerTypeId": 1,
     "PartnerType": null
   },
@@ -51,7 +51,7 @@
     "City": "Bethlehem",
     "State": "Pennsylvania",
     "PostalCode": "18020",
-    "Website": "christmascitystudio.com",
+    "Website": "https://christmascitystudio.com",
     "PartnerTypeId": 3,
     "PartnerType": null
   },
@@ -65,7 +65,7 @@
     "City": "Seattle",
     "State": "Washington",
     "PostalCode": "98101",
-    "Website": "code.org",
+    "Website": "https://code.org",
     "PartnerTypeId": 1,
     "PartnerType": null
   },
@@ -79,7 +79,7 @@
     "City": "New York City",
     "State": "New York",
     "PostalCode": "10281",
-    "Website": "collegeboard.org",
+    "Website": "https://collegeboard.org",
     "PartnerTypeId": 1,
     "PartnerType": null
   },
@@ -93,7 +93,7 @@
     "City": "Maple Grove",
     "State": "Minnesota",
     "PostalCode": "55311",
-    "Website": "datarecognitioncorp.com",
+    "Website": "https://datarecognitioncorp.com",
     "PartnerTypeId": 1,
     "PartnerType": null
   },
@@ -107,7 +107,7 @@
     "City": "Plainview",
     "State": "New York",
     "PostalCode": "11803",
-    "Website": "scholarchip.com",
+    "Website": "https://scholarchip.com",
     "PartnerTypeId": 4,
     "PartnerType": null
   },
@@ -121,7 +121,7 @@
     "City": "Reston",
     "State": "Virginia",
     "PostalCode": "20191–1591",
-    "Website": "padeca.org deca.org",
+    "Website": "https://padeca.org, https://deca.org",
     "PartnerTypeId": 3,
     "PartnerType": null
   },
@@ -135,7 +135,7 @@
     "City": "New York City",
     "State": "New York",
     "PostalCode": "10018",
-    "Website": "secure.donorschoose.org/contact/contact_form.html",
+    "Website": "https://secure.donorschoose.org/contact/contact_form.html",
     "PartnerTypeId": 2,
     "PartnerType": null
   },
@@ -149,7 +149,7 @@
     "City": "Norristown",
     "State": "Pennsylvania",
     "PostalCode": "19403",
-    "Website": "epaumc.org",
+    "Website": "https://epaumc.org",
     "PartnerTypeId": 3,
     "PartnerType": null
   },
@@ -163,7 +163,7 @@
     "City": "Knoxville",
     "State": "Tennessee",
     "PostalCode": "37922",
-    "Website": "ess.com",
+    "Website": "https://ess.com",
     "PartnerTypeId": 3,
     "PartnerType": null
   },
@@ -177,7 +177,7 @@
     "City": "Bethlehem",
     "State": "Pennsylvania",
     "PostalCode": "87922",
-    "Website": "None",
+    "Website": null,
     "PartnerTypeId": 3,
     "PartnerType": null
   },
@@ -191,7 +191,7 @@
     "City": "Jersey Shore",
     "State": "Pennsylvania",
     "PostalCode": "17740",
-    "Website": "pafbla.org fbla.org",
+    "Website": "https://pafbla.org, https://fbla.org",
     "PartnerTypeId": 3,
     "PartnerType": null
   },
@@ -205,7 +205,7 @@
     "City": "New York City",
     "State": "New York",
     "PostalCode": "10011",
-    "Website": "workspace.google.com",
+    "Website": "https://workspace.google.com",
     "PartnerTypeId": 4,
     "PartnerType": null
   },
@@ -219,7 +219,7 @@
     "City": "Minneapolis",
     "State": "Minnesota",
     "PostalCode": "55435",
-    "Website": "jostens.com",
+    "Website": "https://jostens.com",
     "PartnerTypeId": 3,
     "PartnerType": null
   },
@@ -233,7 +233,7 @@
     "City": "Malvern",
     "State": "Pennsylvania",
     "PostalCode": "19355",
-    "Website": "microsoft.com",
+    "Website": "https://microsoft.com",
     "PartnerTypeId": 4,
     "PartnerType": null
   },
@@ -247,7 +247,7 @@
     "City": "Not Available",
     "State": "Not Available",
     "PostalCode": "Not Available",
-    "Website": "myschoolbucks.com",
+    "Website": "https://myschoolbucks.com",
     "PartnerTypeId": 2,
     "PartnerType": null
   },
@@ -261,7 +261,7 @@
     "City": "Westfield",
     "State": "New Jersey",
     "PostalCode": "07090",
-    "Website": "powerschool.eastonsd.org",
+    "Website": "https://powerschool.eastonsd.org",
     "PartnerTypeId": 3,
     "PartnerType": null
   },
@@ -275,7 +275,7 @@
     "City": "Not Available",
     "State": "Not Available",
     "PostalCode": "Not Available",
-    "Website": "schoolcafe.com",
+    "Website": "https://schoolcafe.com",
     "PartnerTypeId": 2,
     "PartnerType": null
   },
@@ -289,7 +289,7 @@
     "City": "None",
     "State": "None",
     "PostalCode": "None",
-    "Website": "eastonsd.schoology.com",
+    "Website": "https://eastonsd.schoology.com",
     "PartnerTypeId": 1,
     "PartnerType": null
   },
@@ -303,7 +303,7 @@
     "City": "Charlotte",
     "State": "North Carolina",
     "PostalCode": "Not Available",
-    "Website": "securly.com",
+    "Website": "https://securly.com",
     "PartnerTypeId": 4,
     "PartnerType": null
   },
@@ -317,7 +317,7 @@
     "City": "Auburn Hills",
     "State": "Michigan",
     "PostalCode": "48326",
-    "Website": "teachersdiscovery.com",
+    "Website": "https://teachersdiscovery.com",
     "PartnerTypeId": 1,
     "PartnerType": null
   },
@@ -331,7 +331,7 @@
     "City": "Reston",
     "State": "Virginia",
     "PostalCode": "20191–1591",
-    "Website": "patsa.org tsaweb.org",
+    "Website": "https://patsa.org, https://tsaweb.org",
     "PartnerTypeId": 3,
     "PartnerType": null
   },
@@ -343,9 +343,9 @@
     "Email": null,
     "Address": "1867 Yonge St. Suite 700",
     "City": "Toronto",
-    "State": "Ontario, Canada",
+    "State": "Ontario in Canada",
     "PostalCode": "Not Available",
-    "Website": "xello.world",
+    "Website": "https://xello.world",
     "PartnerTypeId": 1,
     "PartnerType": null
   }
