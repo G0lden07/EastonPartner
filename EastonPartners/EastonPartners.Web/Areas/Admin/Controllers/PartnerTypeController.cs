@@ -16,6 +16,7 @@ using System.ComponentModel.DataAnnotations;
 using EastonPartners.Domain.Entities;
 using EastonPartners.Infrastructure.Persistence.DbContexts;
 using EastonPartners.Web.Seeder;
+using Parlot.Fluent;
 
 namespace EastonPartners.Web.Areas.Admin.Controllers;
 
@@ -102,8 +103,21 @@ public class PartnerTypeController : BaseController<PartnerTypeController>
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
         .ThenAction("Manage PartnerType", "Index", "PartnerTypeController", new { Area = "Admin" })
-        .Then("Create PartnerType");     
-        
+        .Then("Create PartnerType");
+
+        // Checks if name is empty
+        if (!string.IsNullOrEmpty(partnerType.Name))
+        {
+            // Checks for duplicates
+            var exists = await _context.PartnerType.FirstOrDefaultAsync(x => x.Name == partnerType.Name && x.Id != partnerType.Id);
+
+            if (exists != null)
+            {
+                _toast.Error("Unable to create new partner type. This partner type already exists.");
+                return RedirectToAction(nameof(Edit), new { id = exists.Id });
+            }
+        }
+
         // Remove validation errors from fields that aren't in the binding field list
         ModelState.Scrub(createBindingFields);           
 
@@ -170,8 +184,21 @@ public class PartnerTypeController : BaseController<PartnerTypeController>
 		// Fetch the existing Partner type from the context
 		PartnerType model = await _context.PartnerType.FindAsync(id);
 
-		// Update the model properties with values from the bound partner type
-		model.Name = partnerType.Name;
+        // Checks if name is empty
+        if (!string.IsNullOrEmpty(partnerType.Name))
+        {
+            // Checks for duplicates
+            var exists = await _context.PartnerType.FirstOrDefaultAsync(x => x.Name == partnerType.Name && x.Id != partnerType.Id);
+
+            if (exists != null)
+            {
+                _toast.Error("Another partner type exists with the same name.");
+                return RedirectToAction(nameof(Edit), new { id = exists.Id });
+            }
+        }
+
+        // Update the model properties with values from the bound partner type
+        model.Name = partnerType.Name;
         // Remove validation errors from fields that aren't in the binding field list
         ModelState.Scrub(editBindingFields);           
 

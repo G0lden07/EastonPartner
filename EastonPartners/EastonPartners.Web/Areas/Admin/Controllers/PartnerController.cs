@@ -117,8 +117,21 @@ public class PartnerController : BaseController<PartnerController>
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
         .ThenAction("Manage Partner", "Index", "PartnerController", new { Area = "Admin" })
-        .Then("Create Partner");     
-        
+        .Then("Create Partner");
+
+        // Checks if name is empty
+        if (!string.IsNullOrEmpty(partner.Name))
+        {
+            // Checks for duplicates
+            var exists = await _context.Partner.FirstOrDefaultAsync(x => x.Name == partner.Name && x.PartnerId != partner.PartnerId);
+
+            if (exists != null)
+            {
+                _toast.Error("Unable to create new partner. This partner already exists.");
+                return RedirectToAction(nameof(Edit), new { id = exists.PartnerId });
+            }
+        }
+
         // Remove validation errors from fields that aren't in the binding field list
         ModelState.Scrub(createBindingFields);           
 
@@ -191,8 +204,21 @@ public class PartnerController : BaseController<PartnerController>
 		// Fetch the existing Partner from the context
 		Partner model = await _context.Partner.FindAsync(id);
 
-		// Update the model properties with values from the bound partner
-		model.Name = partner.Name;
+        // Checks if name is empty
+        if (!string.IsNullOrEmpty(partner.Name))
+        {
+            // Checks for duplicates
+            var exists = await _context.Partner.FirstOrDefaultAsync(x => x.Name == partner.Name && x.PartnerId != partner.PartnerId);
+
+            if (exists != null)
+            {
+                _toast.Error("Unable to create new partner. This partner already exists.");
+                return RedirectToAction(nameof(Edit), new { id = exists.PartnerId });
+            }
+        }
+
+        // Update the model properties with values from the bound partner
+        model.Name = partner.Name;
         model.Description = partner.Description;
         model.PhoneNumber = partner.PhoneNumber;
         model.Email = partner.Email;
