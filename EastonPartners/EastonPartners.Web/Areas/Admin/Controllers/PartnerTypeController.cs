@@ -192,7 +192,7 @@ public class PartnerTypeController : BaseController<PartnerTypeController>
 
             if (exists != null)
             {
-                _toast.Error("Another partner type exists with the same name.");
+                _toast.Error("A partner type with this name already exists.");
                 return RedirectToAction(nameof(Edit), new { id = exists.Id });
             }
         }

@@ -212,7 +212,7 @@ public class PartnerController : BaseController<PartnerController>
 
             if (exists != null)
             {
-                _toast.Error("Unable to create new partner. This partner already exists.");
+                _toast.Error("A partner with this name already exists.");
                 return RedirectToAction(nameof(Edit), new { id = exists.PartnerId });
             }
         }
