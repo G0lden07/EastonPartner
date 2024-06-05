@@ -143,6 +143,7 @@ public class PartnerController : BaseController<PartnerController>
             
             _toast.Success("Created successfully.");
 
+            // Backs up data to a JSON file
             jsonConvertor.copyToJSON();
             
                 return RedirectToAction(nameof(Index));
@@ -299,6 +300,7 @@ public class PartnerController : BaseController<PartnerController>
         
         _toast.Success("Partner deleted successfully");
 
+        // Backs up data to JSON file
 		jsonConvertor.copyToJSON();
 
 		return RedirectToAction(nameof(Index));

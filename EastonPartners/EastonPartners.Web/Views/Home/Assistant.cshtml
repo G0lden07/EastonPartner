@@ -6,6 +6,7 @@
 
 <head>
     <script src="~/vendor/chat-bot/bot.js" defer></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
     <script src="~/vendor/theme-adjuster\script.js" defer></script>
 </head>
 
@@ -39,9 +40,10 @@
             <p>Type your question in the box bellow and I'll help you as much as I can.</p>
             <hr/>
             <div id="chat">
-
             </div>
         </div>
     </div>
-    <input id="text-box" style="width: 600px;" /> <button onclick="go()" style="width: 68px;" class="btn btn-primary">Go</button>
+    <form hx-post="/home/chat" hx-target="#chat" hx-swap="beforeend" >
+        <input id="text-box" name="message" style="width: 600px;" /> <input onclick="go()" type="submit" value="Go" style="width: 68px;" class="btn btn-primary">
+    </form>
 </div>

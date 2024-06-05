@@ -28,6 +28,7 @@ using EastonPartners.Infrastructure.Common.Templates;
 using EastonPartners.Infrastructure.Common.Templates.Services;
 using EastonPartners.Infrastructure.Identity.Services;
 using EastonPartners.Web.Jobs;
+using OpenAI.Extensions;
 
 namespace EastonPartners.Web;
 
@@ -90,7 +91,7 @@ public class Startup
             config.IsDismissable = true;
             config.Position = NotyfPosition.BottomRight;
         });
-
+        services.AddOpenAIService();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

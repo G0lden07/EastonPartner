@@ -2,7 +2,6 @@
 using FluentEmail.Core.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 using Microsoft.Extensions.Logging;
 using RoverCore.Abstractions.Templates;
 using EastonPartners.Domain.Entities.Settings;
