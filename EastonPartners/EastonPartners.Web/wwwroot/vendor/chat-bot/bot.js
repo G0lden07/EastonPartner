@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const chat = document.querySelector('#chat');
     const textBox = document.querySelector('#text-box');
+    const waitingAnimation = document.getElementById('waiting-animation');
+    let dotCount = 0;
+    let dotInterval;
 
     function applyStylesToResponse(response) {
         const body = document.body;
@@ -44,4 +47,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     window.go = go;
+
+    // Animation for waiting message
+    function animateDots() {
+        if (waitingAnimation) {
+            waitingAnimation.textContent = '.' + '.'.repeat(dotCount % 3);
+            dotCount++;
+        }
+    }
+
+    // Start the dot animation when the waiting indicator is shown
+    const startDotAnimation = () => {
+        textBox.value = "";
+
+        dotCount = 0;
+        dotInterval = setInterval(animateDots, 500);
+    };
+
+    // Stop the dot animation when the waiting indicator is hidden
+    const stopDotAnimation = () => {
+        clearInterval(dotInterval);
+        if (waitingAnimation) {
+            waitingAnimation.textContent = '.';
+        }
+    };
+
+    // Use HTMX events to start and stop the animation
+    document.body.addEventListener("htmx:configRequest", startDotAnimation);
+    document.body.addEventListener("htmx:afterRequest", stopDotAnimation);
 });

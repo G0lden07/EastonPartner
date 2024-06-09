@@ -37,9 +37,6 @@
         @RenderBody()
     </div>
 
-    <!-- Footer-->
-    @await Html.PartialAsync("~/Views/Shared/Layouts/Front/_Footer.cshtml")
-
 </div>
 
 <script src="/vendor/jquery/jquery.min.js"></script>
@@ -56,6 +53,9 @@
 @RenderSection("Scripts", required: false)
 
 </body>
+
+<!-- Footer-->
+@await Html.PartialAsync("~/Views/Shared/Layouts/Front/_Footer.cshtml")
 </html>
 
 

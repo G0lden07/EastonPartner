@@ -45,8 +45,6 @@ public class HomeController : BaseController<HomeController>
             Messages = new List<ChatMessage>
             {
                 //ChatMessage.FromSystem("You are a helpful assistant."),
-                //ChatMessage.FromUser("Who won the world series in 2020?"),
-                //ChatMessage.FromAssistant("The Los Angeles Dodgers won the World Series in 2020."),
                 ChatMessage.FromUser(message)
             },
             Model = OpenAI.ObjectModels.Models.Gpt_4o,

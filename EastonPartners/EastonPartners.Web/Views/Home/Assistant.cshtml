@@ -1,13 +1,35 @@
 @inject EastonPartners.Domain.Entities.Settings.ApplicationSettings Settings
 
 @{
-    Layout = "Layouts/Empty/_Layout";
+    Layout = "~/Views/Shared/Layouts/Front/_Layout.cshtml";
 }
 
 <head>
     <script src="~/vendor/chat-bot/bot.js" defer></script>
     <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
     <script src="~/vendor/theme-adjuster\script.js" defer></script>
+    <style type="text/css">
+        htmx-indicator {
+            opacity: 0;
+            display: none;
+            transition: opacity 500ms ease-in;
+        }
+
+        .htmx-request .htmx-indicator {
+            opacity: 1;
+            display:block;
+        }
+
+        .htmx-request.htmx-indicator {
+            opacity: 1;
+            display: block;
+        }
+
+        #waiting-animation {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <div class="container-narrow py-4">
@@ -41,9 +63,13 @@
             <hr/>
             <div id="chat">
             </div>
+            <div id="waiting" class="htmx-indicator response">
+                Assistant: 
+                <p id="waiting-animation">.</p>
+            </div>
         </div>
     </div>
-    <form hx-post="/home/chat" hx-target="#chat" hx-swap="beforeend" >
+    <form hx-post="/home/chat" hx-target="#chat" hx-swap="beforeend" hx-indicator="#waiting" style="padding-top: 10px;">
         <input id="text-box" name="message" style="width: 600px;" /> <input onclick="go()" type="submit" value="Go" style="width: 68px;" class="btn btn-primary">
     </form>
 </div>
