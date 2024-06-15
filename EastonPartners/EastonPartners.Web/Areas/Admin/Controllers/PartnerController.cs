@@ -68,11 +68,13 @@ public class PartnerController : BaseController<PartnerController>
     // GET: Admin/Partner/Details/5
     public async Task<IActionResult> Details(int? id)
     {
-        ViewData["AreaTitle"] = areaTitle;
+		// Define breadcrumbs for navigation
+		ViewData["AreaTitle"] = areaTitle;
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
             .ThenAction("Manage Partner", "Index", "Partner", new { Area = "Admin" })
             .Then("Partner Details");            
 
+        // Check if the id is null
         if (id == null)
         {
             return NotFound();
@@ -82,6 +84,8 @@ public class PartnerController : BaseController<PartnerController>
 		var partner = await _context.Partner
                 .Include(p => p.PartnerType)
             .FirstOrDefaultAsync(m => m.PartnerId == id);
+
+        // Check if the entry exists
         if (partner == null)
         {
             return NotFound();
@@ -94,7 +98,8 @@ public class PartnerController : BaseController<PartnerController>
 	[Authorize(Roles = "Admin")]
 	public IActionResult Create()
     {
-        _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
+		// Define breadcrumbs for navigation
+		_breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
             .ThenAction("Manage Partner", "Index", "Partner", new { Area = "Admin" })
             .Then("Create Partner");
 
@@ -112,9 +117,11 @@ public class PartnerController : BaseController<PartnerController>
 	[Authorize(Roles = "Admin")]
 	public async Task<IActionResult> Create([Bind(createBindingFields)] Partner partner)
     {
+        // Define data backup tool
 		PartnerToJSON jsonConvertor = new PartnerToJSON(_context);
-		ViewData["AreaTitle"] = areaTitle;
 
+		// // Define breadcrumbs for navigation
+		ViewData["AreaTitle"] = areaTitle;
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
         .ThenAction("Manage Partner", "Index", "PartnerController", new { Area = "Admin" })
         .Then("Create Partner");
@@ -135,6 +142,7 @@ public class PartnerController : BaseController<PartnerController>
         // Remove validation errors from fields that aren't in the binding field list
         ModelState.Scrub(createBindingFields);           
 
+        // Checks for input validation
         if (ModelState.IsValid)
         {
 			// Add the new Partner to the context and save changes
@@ -146,8 +154,8 @@ public class PartnerController : BaseController<PartnerController>
             // Backs up data to a JSON file
             jsonConvertor.copyToJSON();
             
-                return RedirectToAction(nameof(Index));
-            }
+            return RedirectToAction(nameof(Index));
+        }
 
 		// Provide SelectList for the PartnerTypeId field in case of validation errors
 		ViewData["PartnerTypeId"] = new SelectList(_context.PartnerType, "Id", "Name", partner.PartnerTypeId);
@@ -158,12 +166,14 @@ public class PartnerController : BaseController<PartnerController>
 	[Authorize(Roles = "Admin")]
 	public async Task<IActionResult> Edit(int? id)
     {
-        ViewData["AreaTitle"] = areaTitle;
+		// Define breadcrumbs for navigation
+		ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
         .ThenAction("Manage Partner", "Index", "Partner", new { Area = "Admin" })
         .Then("Edit Partner");     
 
+        // Checks if id is null
         if (id == null)
         {
             return NotFound();
@@ -189,7 +199,10 @@ public class PartnerController : BaseController<PartnerController>
 	[Authorize(Roles = "Admin")]
 	public async Task<IActionResult> Edit(int id, [Bind(editBindingFields)] Partner partner)
     {
+        // Define data backup tool
 		PartnerToJSON jsonConvertor = new PartnerToJSON(_context);
+
+		// Define breadcrumbs for navigation
 		ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
@@ -232,6 +245,7 @@ public class PartnerController : BaseController<PartnerController>
         // Remove validation errors from fields that aren't in the binding field list
         ModelState.Scrub(editBindingFields);           
 
+        // Checks for data validation
         if (ModelState.IsValid)
         {
             try
@@ -262,12 +276,14 @@ public class PartnerController : BaseController<PartnerController>
 	[Authorize(Roles = "Admin")]
 	public async Task<IActionResult> Delete(int? id)
     {
-        ViewData["AreaTitle"] = areaTitle;
+		// Define breadcrumbs for navigation
+		ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
         .ThenAction("Manage Partner", "Index", "Partner", new { Area = "Admin" })
         .Then("Delete Partner");  
 
+        // Checks if id is null
         if (id == null)
         {
             return NotFound();
@@ -277,6 +293,8 @@ public class PartnerController : BaseController<PartnerController>
 		var partner = await _context.Partner
                 .Include(p => p.PartnerType)
             .FirstOrDefaultAsync(m => m.PartnerId == id);
+
+        // Checks if the entry exists
         if (partner == null)
         {
             return NotFound();
@@ -291,6 +309,7 @@ public class PartnerController : BaseController<PartnerController>
 	[Authorize(Roles = "Admin")]
 	public async Task<IActionResult> DeleteConfirmed(int id)
     {
+        // Define data backup tool
 		PartnerToJSON jsonConvertor = new PartnerToJSON(_context);
 
 		// Fetch the Partner and remove it from the context, then save changes
